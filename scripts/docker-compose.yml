@@ -1,0 +1,16 @@
+version: '2'
+
+services: 
+  huggie:
+    container_name: huggie
+    build: ../
+    stdin_open: true
+    tty: true
+    privileged: true
+    # depends_on:
+    #   - mongo_db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../:/usr/src/
+      - /usr/src/node_modules  

@@ -8,8 +8,9 @@ interface Example {
 };
 
 const examples: Example[] = [
-    { id: id++, name: 'example 0' }, 
-    { id: id++, name: 'example 1' }
+  { id: id++, name: 'example 0' }, 
+  { id: id++, name: 'example 1' },
+  { id: id++, name: 'example 2' }
 ];
 
 export class ExamplesService {
