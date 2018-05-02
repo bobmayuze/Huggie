@@ -1,7 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
 import * as request from 'supertest';
-import Server from '../server';
+import Server from '../src';
 
 describe('Examples', () => {
   it('should get all examples', () =>
@@ -11,7 +11,7 @@ describe('Examples', () => {
       .then(r => {
         expect(r.body)
           .to.be.an('array')
-          .of.length(2);
+          .of.length(3);
       }));
 
   it('should add a new example', () =>
@@ -34,6 +34,6 @@ describe('Examples', () => {
         expect(r.body)
           .to.be.an('object')
           .that.has.property('name')
-          .equal('test');
+          .equal('example 2');
       }));
 });

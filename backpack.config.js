@@ -1,7 +1,7 @@
 module.exports = {
   webpack: (config, options, webpack) => {
     config.entry.main = [
-      './server/index.ts'
+      './src/index.ts'
     ]
 
     config.resolve = {

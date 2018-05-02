@@ -29,7 +29,8 @@ export default function (app: Application, routes: (app: Application) => void) {
     // These two middleware don't have any options (yet)
     app.use(
       middleware.CORS(),
-      middleware.validateRequest());
+      middleware.validateRequest()
+    );
 
     // Error handler to display the validation error as HTML
     app.use(function (err, req, res, next) {
