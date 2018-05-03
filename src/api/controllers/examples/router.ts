@@ -1,7 +1,7 @@
 import * as express from 'express';
-import controller from './controller';
-
-export default express.Router()
+import { Controller } from './controller';
+const controller = new Controller();
+export const router = express.Router()
     .post('/', controller.create)
     .get('/', controller.all)
     .get('/:id', controller.byId);

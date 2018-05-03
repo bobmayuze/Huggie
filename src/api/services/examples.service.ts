@@ -21,7 +21,7 @@ export class ExamplesService {
 
   byId(id: number): Promise<Example> {
     Logger.info(`fetch example with id ${id}`);
-    return this.all().then(r => r[id])
+    return this.all().then((r) => r[id]);
   }
 
   create(name: string): Promise<Example> {
