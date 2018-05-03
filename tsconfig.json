@@ -4,6 +4,8 @@
     "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "typeRoots": ["node_modules/@types"]
   },
   "include": ["typings.d.ts", "src/**/*.ts"],
