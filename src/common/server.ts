@@ -20,13 +20,13 @@ export default class ExpressServer {
     app.use(express.static(`${root}/public`));
   }
 
-  router(routes: (app: Application) => void): ExpressServer {
-    swaggerify(app, routes)
+  public router(routes:(app:Application) => void) : ExpressServer {
+    swaggerify(app, routes);
     return this;
   }
 
-  listen(port: number = parseInt(process.env.PORT)): Application {
-    const welcome = port => () => l.info(`up and running in ${process.env.NODE_ENV || 'development'} @: ${os.hostname() } on port: ${port}}`);
+  public listen(port:number = parseInt(process.env.PORT)) : Application {
+    const welcome = (port) => () => l.info(`up and running in ${process.env.NODE_ENV || 'development'} @: ${os.hostname() } on port: ${port}}`);
     http.createServer(app).listen(port, welcome(port));
     return app;
   }
