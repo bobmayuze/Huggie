@@ -1,16 +1,47 @@
 version: '2'
 
 services: 
+  huggie_mongo:
+    container_name: huggie_mongo
+    image: 'aashreys/mongo-auth'
+    environment:
+      - AUTH=yes 
+      - MONGODB_ADMIN_USER=HuggieAdmin 
+      - MONGODB_ADMIN_PASS=HuggieAdminPass 
+      - MONGODB_APPLICATION_DATABASE=HuggieDB 
+      - MONGODB_APPLICATION_USER=HuggieDev 
+      - MONGODB_APPLICATION_PASS=HuggieDevPass
+    ports:
+      - "27017:27017"
+
+  huggie_mongo_express:
+    container_name: huggie_mongo_express
+    image: 'mongo-express'
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=huggie_mongo
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=HuggieAdmin 
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=HuggieAdminPass 
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=HuggieDB 
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=HuggieDev 
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=HuggieDevPass 
+    depends_on:
+      - huggie_mongo
+    ports:
+      - "8081:8081"
+
   huggie:
     container_name: huggie
     build: ../
     stdin_open: true
     tty: true
     privileged: true
-    # depends_on:
-    #   - mongo_db
+    depends_on:
+      - huggie_mongo
     ports:
       - "3000:3000"
     volumes:
       - ../:/usr/src/
       - /usr/src/node_modules  
+

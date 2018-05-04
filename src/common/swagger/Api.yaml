@@ -7,6 +7,8 @@ basePath: /api/v1
 tags:
   - name: Examples
     description: Simple example endpoints
+  - name: Users
+    description: endpoints for users
 
 consumes:
   - application/json
@@ -63,3 +65,12 @@ paths:
           description: Return the example with the specified id
         404:
           description: Example not 
+
+  /users:
+    get:
+      tags:
+        - Users
+      description: Fetch all users
+      responses:
+        200:
+          description: Returns all users

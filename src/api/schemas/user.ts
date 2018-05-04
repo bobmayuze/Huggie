@@ -24,4 +24,4 @@ UserSchema.methods.fullName = function() : string {
     return(this.firstName.trim() + ` ` + this.lastName.trim());
 };
 
-export const UserModel:Model<UserModel> = model<UserModel>(`User`, UserSchema);
+export const UserModel:Model<UserModel> = model<UserModel>(`User`, UserSchema, `HuggieUseer`);

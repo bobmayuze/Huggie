@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 const examplesService = new ExamplesService();
 export class Controller {
   public all(req:Request, res:Response) : void {
+    console.log('NOT HERE-----');
     examplesService.all().then((r) => res.json(r));
   }
 

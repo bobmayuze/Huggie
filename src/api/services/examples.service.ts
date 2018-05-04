@@ -1,5 +1,7 @@
 import * as Promise from 'bluebird';
 import Logger from '../../common/logger';
+import { UserSchema, UserModel } from '../schemas/user';
+import { User } from '../interfaces/user';
 
 let id = 0;
 interface Example {
@@ -33,6 +35,22 @@ export class ExamplesService {
     examples.push(example);
     return Promise.resolve(example);
   }
+
+  // public createUser() : any {
+  //   const newUser:User = {
+  //     email: `yuze@123.com`,
+  //     firstName: `yuze`,
+  //     lastName: `ma`,
+  //   };
+  //   const result = new UserModel(newUser).save();
+  // }
+
+  // public getAlluser() : any {
+  //   UserModel.find({}, (result) => {
+  //     console.log(result);
+  //   });
+  //   return {msg:'success'};
+  // }
 }
 
 export default new ExamplesService();
