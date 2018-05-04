@@ -1,6 +1,6 @@
 // import * as Promise from 'bluebird';
 import Logger from '../../common/logger';
-import { UserSchema, UserModel } from '../schemas/user';
+import { UserSchema, UserModel } from '../models/user';
 import { User } from '../interfaces/user';
 import { TIMEOUT } from 'dns';
 
@@ -21,16 +21,19 @@ export class UserService {
         Logger.info('You called test function in user.serveice.ts');
     }
 
-    public createUser() : any {
+    public async createUser() : Promise<any> {
+      console.log('Creating user....');
       const newUser:User = {
         email: `yuze@123.com`,
         firstName: `yuze`,
         lastName: `ma`,
       };
       const result = new UserModel(newUser).save();
+      return result;
     }
 
-    public findUser() {
+    public async findUser() {
+      console.log('Finding user....');
       UserModel.find({}, (err:any, res:UserModel[]) => {
         if (err) {
           Logger.info(err);

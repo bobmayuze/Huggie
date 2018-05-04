@@ -14,9 +14,11 @@ export class UserController {
 
     public async demo(req:Request, res:Response) {
         Logger.info('before wait', new Date());
-        await wait(5000);
+        await wait(1000);
         Logger.info('after wait', new Date());
-        userService.createUser();
+        let result = '"2333"';
+        result = await userService.createUser();
+        Logger.info(result);
         userService.findUser();
         res.json({msg:'success'});
     }

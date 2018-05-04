@@ -6,7 +6,10 @@ export interface UserModel extends User, Document {
 }
 
 export var UserSchema:Schema = new Schema({
-    createdAt : Date,
+    createdAt : {
+        type: Date,
+        default: new Date(),
+    },
     email : String,
     firstName : String,
     lastName : String,
